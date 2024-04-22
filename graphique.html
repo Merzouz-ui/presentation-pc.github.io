@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphique d'Accélération de la Pesanteur</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Données pour le graphique
+        var villes = ['pole Nord','Toronto', 'Mexico', 'Moscow', 'Claude B', 'Sydney', 'porto alegre', 'Kampala','Berlin','Londre','Istanbule','Brasilia','Oslo','Saint-Anne','pole Sud'];
+        var accelerations = [9.85864878095999941365 ,9.831432606924661, 9.812382074462896, 9.84213765239206, 9.836069842885383, 9.822749977490442, 9.8196403809472574408, 9.80665154554655593699, 9.83936007035260296050, 9.83844693092965272285, 9.82898817185011175468 , 9.81049136696710810668 , 9.84554204703001722976 , 9.81069357360084204345 , 9.85864878095999941365];
+
+        // Fonction pour créer et afficher le graphique
+        function afficherGraphique() {
+            // Obtenir le contexte du graphique
+            var ctx = document.getElementById('graphique').getContext('2d');
+
+            // Créer un graphique en ligne avec les points spécifiés
+            var graphique = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: villes,
+                    datasets: [{
+                        label: 'Accélération de la pesanteur (m/s²)',
+                        data: accelerations,
+                        backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        pointRadius: 8,
+                        pointHoverRadius: 10,
+                        fill: false
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Graphique d'Accélération de la Pesanteur</h1>
+
+    <!-- Ajouter un élément canvas pour le graphique -->
+    <canvas id="graphique" width="400" height="200"></canvas>
+
+    <!-- Appeler la fonction pour afficher le graphique -->
+    <script>
+        afficherGraphique();
+    </script>
+</body>
+</html>
